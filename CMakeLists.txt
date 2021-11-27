@@ -39,10 +39,5 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-add_executable(walker src/walker.cpp)
-target_link_libraries(walker ${catkin_LIBRARIES})
-add_dependencies(walker vaccum_walker_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
-
-add_executable(walker_node src/walker_node.cpp)
+add_executable(walker_node src/walker_node.cpp src/walker.cpp)
 target_link_libraries(walker_node ${catkin_LIBRARIES})
-add_dependencies(walker_node vaccum_walker_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
