@@ -26,12 +26,12 @@ class Walker {
     std::string scan_topic;
     float obstacle_thresh;
 
-Walker() : 
-    cmd_vel_topic{"/cmd_vel"},
-    scan_topic{"/scan"},
-    obstacle_thresh{0.5}  // Meters
-    {
-    }
+    Walker() :
+        cmd_vel_topic{"/cmd_vel"},
+        scan_topic{"/scan"},
+        obstacle_thresh{0.5}  // Meters
+        {
+        }
 
     /**
      * @brief Destroy the walker object
@@ -46,5 +46,4 @@ Walker() :
     void Vaccum();
 
     void VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg);
-
 };
