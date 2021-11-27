@@ -19,6 +19,15 @@ generate_messages(
   std_msgs
 )
 
+###################################
+## catkin specific configuration ##
+###################################
+## The catkin_package macro generates cmake config files for your package
+## Declare things to be passed to dependent projects
+## INCLUDE_DIRS: uncomment this if your package contains header files
+## LIBRARIES: libraries you create in this project that dependent projects also need
+## CATKIN_DEPENDS: catkin_packages dependent projects also need
+## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES vaccum_walker
@@ -33,11 +42,16 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include
+  # include
   ${catkin_INCLUDE_DIRS}
 )
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-add_executable(walker_node src/walker_node.cpp src/walker.cpp)
-target_link_libraries(walker_node ${catkin_LIBRARIES})
+add_executable(vaccum_walker_node src/walker_node.cpp  src/walker.cpp)
+target_link_libraries(vaccum_walker_node ${catkin_LIBRARIES})
+add_dependencies(vaccum_walker_node vaccum_walker_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+
+# add_executable(vac_node src/walker_node.cpp src/walker.cpp)
+# target_link_libraries(vac_node ${catkin_LIBRARIES})
+# add_dependencies(vac_node vaccum_walker_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
