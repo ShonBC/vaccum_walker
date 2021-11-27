@@ -10,11 +10,6 @@
  */
 
 #include "../include/walker.h"
-#include <sstream>
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-
-
 
 void Walker::Vaccum(ros::NodeHandle n) {
     this->n = n;

@@ -12,15 +12,14 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <sstream>
-
 #include "../include/walker.h"
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "walker");
     ros::NodeHandle n;
 
-    auto roomba = Walker();
-    roomba.Vaccum(n);  // Call the main walker node
+    // auto roomba = Walker();
+    // roomba.Vaccum(n);  // Call the main walker node
 
     ros::spin();
     return 0;
