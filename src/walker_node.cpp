@@ -18,8 +18,8 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "walker");
     ros::NodeHandle n;
 
-    // auto roomba = Walker();
-    // roomba.Vaccum(n);  // Call the main walker node
+    Walker roomba;
+    roomba.Vaccum(n);  // Call the main walker node
 
     ros::spin();
     return 0;

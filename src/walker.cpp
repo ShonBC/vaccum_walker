@@ -11,6 +11,9 @@
 
 #include "../include/walker.h"
 
+Walker::~Walker() {
+}
+
 void Walker::Vaccum(ros::NodeHandle n) {
     this->n = n;
     vel_pub = n.advertise<geometry_msgs::Twist>(cmd_vel_topic, 100);
