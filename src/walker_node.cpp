@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     ros::NodeHandle n;
 
     auto roomba = Walker();
-    roomba.Vaccum();  // Call the main walker node
+    roomba.Vaccum(n);  // Call the main walker node
 
     ros::spin();
     return 0;
