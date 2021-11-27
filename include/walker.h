@@ -43,7 +43,9 @@ class Walker {
      * @brief Subscribe to /scan to see when an obstacle is detected
      * 
      */
-    void Vaccum();
+    void Vaccum(ros::NodeHandle n);
+
+    bool Obstacle(const std::vector<float>& lidar_data);
 
     void VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg);
 };
