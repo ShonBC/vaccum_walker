@@ -5,6 +5,8 @@
     <arg name="x_pos" default="0.0"/>
     <arg name="y_pos" default="0.0"/>
     <arg name="z_pos" default="0.0"/>
+    <arg name="record_bag" default="false"/>
+    <arg name="bag_file" default="walker_bag.bag"/>
 
     <!-- Open empty world -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -23,14 +25,14 @@
     args="-urdf -model Turtlebot3 -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
 
     <!-- Run Walker_Node -->
-    <node pkg="vaccum_walker" type="walker_node" name="walker_node">
+    <node pkg="vaccum_walker" type="vaccum_walker_node" name="vaccum_walker_node">
         
     </node>
 
     <!-- Record ROSBag file -->
     <node pkg="rosbag" type="record" name="record_rosbag"
-        args="record -O $(arg bagfile) -a -x '(.*)/camera(.*)'"
-        if="$(arg is_record_bag)">
+        args="record -O $(arg bag_file) -a -x '(.*)/camera(.*)'"
+        if="$(arg record_bag)">
         
     </node>
 
