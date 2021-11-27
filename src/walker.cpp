@@ -9,31 +9,31 @@
  * 
  */
 
-#include "include/walker.h"
+#include "../include/walker.h"
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
 
 
-Walker::Obstacle() {
-    for (int i=359; i >= right_ind; i--) {
-        if (laserscan_data_range[i] <= this->threshold_dist) {
-            return false;
-        }
-    }
+void Walker::Vaccum() {
+    // for (int i=359; i >= right_ind; i--) {
+    //     if (laserscan_data_range[i] <= this->threshold_dist) {
+    //         // return false;
+    //     }
+    // }
 }
 
-Walker::VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
-    geometry_msgs::Twist velocity;
-    if no obstacle detected {
-        velocity.linear.x = 0.5;
-        velocity.angular.z = 0.0;
-    } else {
-        velocity.linear.x = 0.0;
-        velocity.angular.z = -1.0;
-    }
+void Walker::VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
+    // geometry_msgs::Twist velocity;
+    // if no obstacle detected {
+    //     velocity.linear.x = 0.5;
+    //     velocity.angular.z = 0.0;
+    // } else {
+    //     velocity.linear.x = 0.0;
+    //     velocity.angular.z = -1.0;
+    // }
 
-    vel_pub.publish(velocity);
+    // vel_pub.publish(velocity);
 }
 

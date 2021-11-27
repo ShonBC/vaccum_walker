@@ -21,25 +21,30 @@ class Walker {
  public:
     ros::NodeHandle n;
     ros::Publisher vel_pub;
-    std::string cmd_vel_topic = "/cmd_vel";
+    std::string cmd_vel_topic;
     ros::Subscriber scan_sub;
-    std::string scan_topic = "/scan";
-    float obstacle_dist = 0.5;  // Meters
+    std::string scan_topic;
+    float obstacle_thresh;
 
-    walker(/* args */);
+Walker() : 
+    cmd_vel_topic{"/cmd_vel"},
+    scan_topic{"/scan"},
+    obstacle_thresh{0.5}  // Meters
+    {
+    }
 
     /**
      * @brief Destroy the walker object
      * 
      */
-    ~walker();
+    ~Walker();
 
     /**
      * @brief Subscribe to /scan to see when an obstacle is detected
      * 
      */
-    void Obstacle();
+    void Vaccum();
 
-    void VaccumCallBack();
+    void VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg);
 
 };

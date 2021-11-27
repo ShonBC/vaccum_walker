@@ -17,7 +17,7 @@
 #include <sstream>
 #include <cstdlib>
 
-#include "include/walker.h"
+#include "../include/walker.h"
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "walker");
