@@ -11,11 +11,7 @@
 
 #include <ros/ros.h>
 #include <std_msgs/String.h>
-
-#include <iostream>
-#include <memory>
 #include <sstream>
-#include <cstdlib>
 
 #include "../include/walker.h"
 
