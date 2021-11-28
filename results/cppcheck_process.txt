@@ -1,0 +1,2 @@
+[include/walker.h:16]: (information) Include file: "ros/ros.h" not found.
+[include/walker.h:17]: (information) Include file: "std_msgs/String.h" not found.

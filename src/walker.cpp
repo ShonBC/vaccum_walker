@@ -9,29 +9,44 @@
  * 
  */
 
-#include "include/walker.h"
-#include <sstream>
-#include "ros/ros.h"
-#include "std_msgs/String.h"
+#include "../include/walker.h"
 
-
-
-Walker::Obstacle() {
-    for (int i=359; i >= right_ind; i--) {
-        if (laserscan_data_range[i] <= this->threshold_dist) {
-            return false;
-        }
-    }
+Walker::~Walker() {
 }
 
-Walker::VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
+void Walker::Vaccum(ros::NodeHandle n) {
+    this->n = n;
+    vel_pub = n.advertise<geometry_msgs::Twist>(cmd_vel_topic, 100);
+
+    scan_sub = this->n.subscribe(this->scan_topic, 100,
+                                &Walker::VaccumCallBack, this);
+
+    ros::spinOnce();
+}
+
+bool Walker::Obstacle(const std::vector<float>& lidar_data) {
+    ROS_INFO_STREAM("Checking for obstacle");
+
+    for (int i = 20; i < 160; i++) {
+        if (lidar_data[i] <= obstacle_thresh) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Walker::VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
     geometry_msgs::Twist velocity;
-    if no obstacle detected {
+    std::vector<float> lidar_data = scan_msg->ranges;
+
+    if (Obstacle(lidar_data) != true) {
+        ROS_INFO_STREAM("No obstacles detected, driving forward");
         velocity.linear.x = 0.5;
         velocity.angular.z = 0.0;
     } else {
+        ROS_INFO_STREAM("Obstacle detected, turning");
         velocity.linear.x = 0.0;
-        velocity.angular.z = -1.0;
+        velocity.angular.z = -0.5;
     }
 
     vel_pub.publish(velocity);
