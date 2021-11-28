@@ -1,7 +1,7 @@
 /**
  * @file walker_node.cpp
  * @author your name (you@domain.com)
- * @brief 
+ * @brief Main Vaccum_walker node. Turtlebot will drive forward until an obstacle is detected then turn and resume driving forward again.
  * @version 0.1
  * @date 2021-11-26
  * 

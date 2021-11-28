@@ -41,12 +41,25 @@ class Walker {
     ~Walker();
 
     /**
-     * @brief Subscribe to /scan to see when an obstacle is detected
+     * @brief Publish to /cmd_vel and subscribe to /scan
      * 
+     * @param n ROS Node Handle
      */
     void Vaccum(ros::NodeHandle n);
 
+    /**
+     * @brief Check Lidar data if an obstacle is detected within a threshold distance
+     * 
+     * @param lidar_data Lidar scan data
+     * @return true If obstacle is detected
+     * @return false If no obstacle is detected
+     */
     bool Obstacle(const std::vector<float>& lidar_data);
 
+    /**
+     * @brief Callback Function to determine velocities to publish
+     * 
+     * @param scan_msg Lidar scan info from /scan topic
+     */
     void VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg);
 };
