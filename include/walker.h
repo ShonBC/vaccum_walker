@@ -11,6 +11,7 @@
 
 #pragma once
 #include <string>
+#include <vector>
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
