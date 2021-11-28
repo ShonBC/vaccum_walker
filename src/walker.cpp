@@ -22,16 +22,15 @@ void Walker::Vaccum(ros::NodeHandle n) {
                                 &Walker::VaccumCallBack, this);
 
     ros::spinOnce();
-
-    // for (int i=359; i >= right_ind; i--) {
-    //     if (laserscan_data_range[i] <= this->threshold_dist) {
-    //         // return false;
-    //     }
-    // }
 }
 
 bool Walker::Obstacle(const std::vector<float>& lidar_data) {
-    return true;
+    for (auto data : lidar_data) {
+        if (data <= obstacle_thresh) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Walker::VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
@@ -39,9 +38,11 @@ void Walker::VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
     std::vector<float> lidar_data = scan_msg->ranges;
 
     if (Obstacle(lidar_data) != true) {
+        ROS_INFO_STREAM("No obstacles detected, driving forward");
         velocity.linear.x = 0.5;
         velocity.angular.z = 0.0;
     } else {
+        ROS_INFO_STREAM("Obstacle detected, turning");
         velocity.linear.x = 0.0;
         velocity.angular.z = -1.0;
     }
