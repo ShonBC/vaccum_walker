@@ -45,7 +45,7 @@ void Walker::VaccumCallBack(const sensor_msgs::LaserScan::ConstPtr& scan_msg) {
     } else {
         ROS_INFO_STREAM("Obstacle detected, turning");
         velocity.linear.x = 0.0;
-        velocity.angular.z = -1.0;
+        velocity.angular.z = -0.5;
     }
 
     vel_pub.publish(velocity);
