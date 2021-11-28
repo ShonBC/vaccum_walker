@@ -27,7 +27,7 @@ void Walker::Vaccum(ros::NodeHandle n) {
 bool Walker::Obstacle(const std::vector<float>& lidar_data) {
     ROS_INFO_STREAM("Checking for obstacle");
 
-    for (int i = 30; i < 150; i++) {
+    for (int i = 20; i < 160; i++) {
         if (lidar_data[i] <= obstacle_thresh) {
             return true;
         }
