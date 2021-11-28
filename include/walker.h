@@ -29,7 +29,7 @@ class Walker {
     Walker() :
         cmd_vel_topic{"/cmd_vel"},
         scan_topic{"/scan"},
-        obstacle_thresh{0.5}  // Meters
+        obstacle_thresh{1.0}  // Meters
         {
         }
 
