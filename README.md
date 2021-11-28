@@ -46,3 +46,10 @@ In a new terminal navigate to the [docs/bag](docs/bag) directory and run:
     roscd vaccum_walker/docs/bag
     rosbag play walker_bag.bag
 
+Generate cppcheck and cpplint results and store in a text file in [/results](results) directory:
+
+    chmod +x run_cpplint.sh
+    ./run_cpplint.sh
+
+    chmod +x run_cppcheck.sh
+    ./run_cppcheck.sh
