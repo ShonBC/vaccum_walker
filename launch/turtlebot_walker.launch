@@ -31,7 +31,7 @@
 
     <!-- Record ROSBag file -->
     <node pkg="rosbag" type="record" name="record_rosbag"
-        args="record -O $(arg bag_file) -a -x '(.*)/camera(.*)'"
+        args="record -O $(find vaccum_walker)/docs/bag/walker_bag.bag -a -x '(.*)/camera(.*)'"
         if="$(arg record_bag)">
         
     </node>
